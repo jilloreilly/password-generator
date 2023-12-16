@@ -151,36 +151,54 @@ function getPasswordOptions() {
   lowercase: ${pwOptions.lower}`);
   
   let possibleChar = [];
-  //let guaranteedChar = [];
-  
+  let guaranteedChar = [];
+
+  // function getRandomItem(array) {
+  //   const randomIndex = Math.floor(Math.random() * array.length);
+
+  //   return array[randomIndex];
+  // }
+ 
   if (pwOptions.special) {  
     possibleChar = possibleChar.concat(specialCharacters); 
-    // randomChar1 = Math.random(specialCharacters);
-    // console.log(randomChar1);
-    //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
+    const guaranteedSpecial = getRandomItem(specialCharacters);
+    console.log(`Random guaranteed special character: ${guaranteedSpecial}`)
+    guaranteedChar.push(guaranteedSpecial);
   }
 
   if (pwOptions.number) {
     possibleChar = possibleChar.concat(numericCharacters);
+    const guaranteedNumeric = getRandomItem(numericCharacters);
+    console.log(`Random guaranteed numeric character: ${guaranteedNumeric}`)
+    guaranteedChar.push(guaranteedNumeric);
   }
 
   if (pwOptions.upper) {
     possibleChar = possibleChar.concat(upperCasedCharacters);
+    const guaranteedUpper = getRandomItem(upperCasedCharacters);
+    console.log(`Random guaranteed uppercase character: ${guaranteedUpper}`)
+    guaranteedChar.push(guaranteedUpper);
   }
 
   if (pwOptions.lower) {
     possibleChar = possibleChar.concat(lowerCasedCharacters);
+    const guaranteedLower = getRandomItem(lowerCasedCharacters);
+    console.log(`Random guaranteed lower character: ${guaranteedLower}`)
+    guaranteedChar.push(guaranteedLower);
   }
   
   console.log(`Possible characters: ${possibleChar}`);
-  //console.log(`Guaranteed characters: ${guaranteedChar}`);
+  console.log(`Guaranteed characters: ${guaranteedChar}`);
   
   return pwOptions;
   
 }
 
 // Function for getting a random element from an array
-function getRandom(arr) {
+function getRandomItem(array) {
+  const randomIndex = Math.floor(Math.random() * array.length);
+
+  return array[randomIndex];
 
   // Need a variable to hold the password as it's being generated
   // Need a variable to hold the index that's being generated
@@ -199,33 +217,7 @@ function generatePassword() {
  
   let options = getPasswordOptions();
 
-  // console.log(`options passed through getPasswordOptions function ${options}`);
-
-  // //Array to contain one of each type of chosen character to ensure each wile be used
-  // let possibleChar = [];
-  // //let guaranteedChar = [];
-  
-  // if (options.special) {  
-  //   possibleChar = possibleChar.concat(specialCharacters); 
-  //   // randomChar1 = Math.random(specialCharacters);
-  //   // console.log(randomChar1);
-  //   //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
-  // }
-
-  // if (options.number) {
-  //   possibleChar = possibleChar.concat(numericCharacters);
-  // }
-
-  // if (options.upper) {
-  //   possibleChar = possibleChar.concat(upperCasedCharacters);
-  // }
-
-  // if (options.lower) {
-  //   possibleChar = possibleChar.concat(lowerCasedCharacters);
-  // }
-  
-  // console.log(`Possible characters: ${possibleChar}`);
-  //console.log(`Guaranteed characters: ${guaranteedChar}`);
+ 
 
 }
 
