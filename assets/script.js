@@ -116,13 +116,13 @@ function getPasswordOptions() {
   
   if (pwdLength < 8 || pwdLength > 128) { // Checks number entered is between 8 and 128
     alert("Invalid password length. Please enter a number between 8 and 128");
-    return
+    return getPasswordOptions();
   }
-  console.log(pwdLength);
+  console.log(`Password length: ${pwdLength}`);
 
   if (isNaN(pwdLength)=== true) { // Checks that the input is a number
     alert("Please enter a number");
-    return  
+    return getPasswordOptions(); 
   }
   
   let specialChar = confirm("Would you like special characters in your password?");
@@ -132,7 +132,7 @@ function getPasswordOptions() {
 
   if (specialChar === false && numericChar === false && upperCaseChar === false && lowerCaseChar === false) { // If all options are false
     alert("Please ensure you have selected at least 1 character set");
-    return  
+    return getPasswordOptions();  
   }
 
   // Store password options in an object
@@ -143,42 +143,39 @@ function getPasswordOptions() {
     upper: upperCaseChar,
     lower: lowerCaseChar  
   }
-  
-  // let possibleChar = [];
-  // //let guaranteedChar = [];
-  
-  // if (pwOptions.special) {  
-  //   possibleChar = possibleChar.concat(specialCharacters); 
-  //   // randomChar1 = Math.random(specialCharacters);
-  //   // console.log(randomChar1);
-  //   //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
-  // }
-
-  // if (pwOptions.number) {
-  //   possibleChar = possibleChar.concat(numericCharacters);
-  // }
-
-  // if (pwOptions.upper) {
-  //   possibleChar = possibleChar.concat(upperCasedCharacters);
-  // }
-
-  // if (pwOptions.lower) {
-  //   possibleChar = possibleChar.concat(lowerCasedCharacters);
-  // }
-  
-  // console.log(`Possible characters: ${possibleChar}`);
-  // //console.log(`Guaranteed characters: ${guaranteedChar}`);
-
 
   console.log(`Password length: ${pwdLength} and password options: 
   special char: ${pwOptions.special}
   numbers: ${pwOptions.number}
   uppercase: ${pwOptions.upper}
   lowercase: ${pwOptions.lower}`);
-
-  return pwOptions;
-
   
+  let possibleChar = [];
+  //let guaranteedChar = [];
+  
+  if (pwOptions.special) {  
+    possibleChar = possibleChar.concat(specialCharacters); 
+    // randomChar1 = Math.random(specialCharacters);
+    // console.log(randomChar1);
+    //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
+  }
+
+  if (pwOptions.number) {
+    possibleChar = possibleChar.concat(numericCharacters);
+  }
+
+  if (pwOptions.upper) {
+    possibleChar = possibleChar.concat(upperCasedCharacters);
+  }
+
+  if (pwOptions.lower) {
+    possibleChar = possibleChar.concat(lowerCasedCharacters);
+  }
+  
+  console.log(`Possible characters: ${possibleChar}`);
+  //console.log(`Guaranteed characters: ${guaranteedChar}`);
+  
+  return pwOptions;
   
 }
 
@@ -202,32 +199,32 @@ function generatePassword() {
  
   let options = getPasswordOptions();
 
-  console.log(`options passed through getPasswordOptions function ${options}`);
+  // console.log(`options passed through getPasswordOptions function ${options}`);
 
-  //Array to contain one of each type of chosen character to ensure each wile be used
-  let possibleChar = [];
-  //let guaranteedChar = [];
+  // //Array to contain one of each type of chosen character to ensure each wile be used
+  // let possibleChar = [];
+  // //let guaranteedChar = [];
   
-  if (options.special) {  
-    possibleChar = possibleChar.concat(specialCharacters); 
-    // randomChar1 = Math.random(specialCharacters);
-    // console.log(randomChar1);
-    //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
-  }
+  // if (options.special) {  
+  //   possibleChar = possibleChar.concat(specialCharacters); 
+  //   // randomChar1 = Math.random(specialCharacters);
+  //   // console.log(randomChar1);
+  //   //guaranteedChar = guaranteedChar.push(Math.random(specialCharacters));
+  // }
 
-  if (options.number) {
-    possibleChar = possibleChar.concat(numericCharacters);
-  }
+  // if (options.number) {
+  //   possibleChar = possibleChar.concat(numericCharacters);
+  // }
 
-  if (options.upper) {
-    possibleChar = possibleChar.concat(upperCasedCharacters);
-  }
+  // if (options.upper) {
+  //   possibleChar = possibleChar.concat(upperCasedCharacters);
+  // }
 
-  if (options.lower) {
-    possibleChar = possibleChar.concat(lowerCasedCharacters);
-  }
+  // if (options.lower) {
+  //   possibleChar = possibleChar.concat(lowerCasedCharacters);
+  // }
   
-  console.log(`Possible characters: ${possibleChar}`);
+  // console.log(`Possible characters: ${possibleChar}`);
   //console.log(`Guaranteed characters: ${guaranteedChar}`);
 
 }
