@@ -89,7 +89,11 @@ const upperCasedCharacters = [
 ];
 
 const charOptions = [];
-const generatedPassword = '';
+const generatedPasswordArr = [];
+let generatedPwd = '';
+let pwdLength;
+let possibleChar = [];
+let guaranteedChar = [];
 // You can store the generatedPassword as a string and concat each character OR
 // as an array and push each character, then join once you have enough characters
 
@@ -105,14 +109,14 @@ function getPasswordOptions() {
   // !Confirm which character sets to use
   // !If the user answers false for all, either return out of the function or call the function again
   
-  // Once they select a character set:
-  // Generate a random character for each selected character set
-  // Either push selected character sets to a mega-array of all selected characters
+  // !Once they select a character set:
+  // !Generate a random character for each selected character set
+  // !Either push selected character sets to a mega-array of all selected characters
   // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
   
   // Once character sets are selected, move on to generating random characters
 
-  let pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128 characters)"));
+  pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128 characters)"));
   
   if (pwdLength < 8 || pwdLength > 128) { // Checks number entered is between 8 and 128
     alert("Invalid password length. Please enter a number between 8 and 128");
@@ -149,16 +153,7 @@ function getPasswordOptions() {
   numbers: ${pwOptions.number}
   uppercase: ${pwOptions.upper}
   lowercase: ${pwOptions.lower}`);
-  
-  let possibleChar = [];
-  let guaranteedChar = [];
-
-  // function getRandomItem(array) {
-  //   const randomIndex = Math.floor(Math.random() * array.length);
-
-  //   return array[randomIndex];
-  // }
- 
+   
   if (pwOptions.special) {  
     possibleChar = possibleChar.concat(specialCharacters); 
     const guaranteedSpecial = getRandomItem(specialCharacters);
@@ -198,9 +193,16 @@ function getPasswordOptions() {
 function getRandomItem(array) {
   const randomIndex = Math.floor(Math.random() * array.length);
 
-  return array[randomIndex];
+  return array[randomIndex]; 
+}
 
-  // Need a variable to hold the password as it's being generated
+// Function to generate password with user input
+function generatePassword() {
+ 
+  let options = getPasswordOptions();
+
+ // Add a for loop here
+ // Need a variable to hold the password as it's being generated
   // Need a variable to hold the index that's being generated
 
   // For loop that loops the number of times that matches the length the user chose
@@ -210,14 +212,17 @@ function getRandomItem(array) {
   // Add that character to the password
 
   // Once we finish the for loop, return the generated password
-}
+  
+  for (let i = 0; i < pwdLength; i++) {
+    let element = getRandomItem(possibleChar);
+    generatedPasswordArr.push(element);
+    //console.log(`Element: ${element}`);  
+  }
+  console.log(generatedPasswordArr);
+  generatedPwd = generatedPasswordArr.join('');
+  console.log(`Generated password: ${generatedPwd}`);
 
-// Function to generate password with user input
-function generatePassword() {
- 
-  let options = getPasswordOptions();
-
- 
+  return generatedPwd;
 
 }
 
@@ -233,6 +238,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-//generateBtn.addEventListener('click', writePassword);
-//generateBtn.addEventListener('click', getPasswordOptions);
-generateBtn.addEventListener('click', generatePassword);
+generateBtn.addEventListener('click', writePassword);
