@@ -89,13 +89,11 @@ const upperCasedCharacters = [
 ];
 
 // Set variables
-const generatedPwdArr = [];
-let generatedPwd = '';
 let pwdLength;
 let possibleChar = [];
 let guaranteedChar = [];
 // You can store the generatedPassword as a string and concat each character OR
-// as an array and push each character, then join once you have enough characters
+// !as an array and push each character, then join once you have enough characters
 
 // Function to prompt user for password options
 function getPasswordOptions() {
@@ -114,7 +112,7 @@ function getPasswordOptions() {
   // !Either push selected character sets to a mega-array of all selected characters
   // OR you can keep the arrays separate and generate a random number to select the array and another to select the index
   
-  // Once character sets are selected, move on to generating random characters
+  // !Once character sets are selected, move on to generating random characters
 
   pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128)"));
   
@@ -154,7 +152,7 @@ function getPasswordOptions() {
   uppercase: ${pwOptions.upper}
   lowercase: ${pwOptions.lower}`);
    
-  // If  a character set is selected, concatenate that charset array to mega-array called possibleChar.
+  // If a character set is selected, concatenate that charset array to mega-array called possibleChar.
   //Also generate a random character and push to an array called guaranteedChar
   if (pwOptions.special) { 
     possibleChar = possibleChar.concat(specialCharacters); 
@@ -199,7 +197,8 @@ function getRandomItem(array) {
 
 // Function to generate password with user input
 function generatePassword() {
- 
+  const generatedPwdArr = []; // Declare variables inside function to prevent passwords appending when button is clicked again
+  let generatedPwd = '';
   let options = getPasswordOptions();
 
  // Add a for loop here
@@ -216,8 +215,7 @@ function generatePassword() {
   
   for (let i = 0; i < pwdLength; i++) {
     let element = getRandomItem(possibleChar);
-    generatedPwdArr.push(element);
-    //console.log(`Element: ${element}`);  
+    generatedPwdArr.push(element);  
   }
   console.log(generatedPwdArr);
   generatedPwd = generatedPwdArr.join('');

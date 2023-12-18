@@ -4,6 +4,15 @@
   box-sizing: border-box;
 }
 
+/* CSS variables */
+:root {
+  --blue: #4e59c0;
+  --dark: #221c1e;
+  --light: #f9ede3;
+  --green: #1e6157;
+  --yellow: #f5a602;
+}
+
 html,
 body,
 .wrapper {
@@ -14,7 +23,7 @@ body,
 
 body {
   font-family: sans-serif;
-  background-color: #f9fbfd;
+  background-color: var(--blue);
 }
 
 .wrapper {
@@ -27,7 +36,7 @@ header {
   text-align: center;
   padding: 20px;
   padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  color: var(--light);
 }
 
 .card {
@@ -74,7 +83,7 @@ header {
 
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color: var(--yellow);
   border-radius: 25px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
     0px;
