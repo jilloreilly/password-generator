@@ -88,8 +88,8 @@ const upperCasedCharacters = [
   'Z'
 ];
 
-const charOptions = [];
-const generatedPasswordArr = [];
+// Set variables
+const generatedPwdArr = [];
 let generatedPwd = '';
 let pwdLength;
 let possibleChar = [];
@@ -116,7 +116,7 @@ function getPasswordOptions() {
   
   // Once character sets are selected, move on to generating random characters
 
-  pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128 characters)"));
+  pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128)"));
   
   if (pwdLength < 8 || pwdLength > 128) { // Checks number entered is between 8 and 128
     alert("Invalid password length. Please enter a number between 8 and 128");
@@ -154,7 +154,9 @@ function getPasswordOptions() {
   uppercase: ${pwOptions.upper}
   lowercase: ${pwOptions.lower}`);
    
-  if (pwOptions.special) {  
+  // If  a character set is selected, concatenate that charset array to mega-array called possibleChar.
+  //Also generate a random character and push to an array called guaranteedChar
+  if (pwOptions.special) { 
     possibleChar = possibleChar.concat(specialCharacters); 
     const guaranteedSpecial = getRandomItem(specialCharacters);
     console.log(`Random guaranteed special character: ${guaranteedSpecial}`)
@@ -186,7 +188,6 @@ function getPasswordOptions() {
   console.log(`Guaranteed characters: ${guaranteedChar}`);
   
   return pwOptions;
-  
 }
 
 // Function for getting a random element from an array
@@ -215,11 +216,11 @@ function generatePassword() {
   
   for (let i = 0; i < pwdLength; i++) {
     let element = getRandomItem(possibleChar);
-    generatedPasswordArr.push(element);
+    generatedPwdArr.push(element);
     //console.log(`Element: ${element}`);  
   }
-  console.log(generatedPasswordArr);
-  generatedPwd = generatedPasswordArr.join('');
+  console.log(generatedPwdArr);
+  generatedPwd = generatedPwdArr.join('');
   console.log(`Generated password: ${generatedPwd}`);
 
   return generatedPwd;
