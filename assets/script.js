@@ -105,8 +105,7 @@ function getPasswordOptions() {
     alert("Invalid password length. Please enter a number between 8 and 128");
     return getPasswordOptions();
   }
-  console.log(`Password length: ${pwdLength}`);
-
+  
   if (isNaN(pwdLength)=== true) { // Checks that the input is a number
     alert("Please enter a number");
     return getPasswordOptions(); 
@@ -131,46 +130,33 @@ function getPasswordOptions() {
     upper: upperCaseChar,
     lower: lowerCaseChar  
   }
-
-  console.log(`Password length: ${pwdLength} and password options: 
-  special char: ${pwOptions.special}
-  numbers: ${pwOptions.number}
-  uppercase: ${pwOptions.upper}
-  lowercase: ${pwOptions.lower}`);
    
   // If a character set is selected, concatenate that charset array to mega-array called possibleChar.
   //Also generate a random character and push to an array called guaranteedChar
   if (pwOptions.special) { 
     possibleChar = possibleChar.concat(specialCharacters); 
     const guaranteedSpecial = getRandomItem(specialCharacters);
-    console.log(`Random guaranteed special character: ${guaranteedSpecial}`)
     guaranteedChar.push(guaranteedSpecial);
   }
 
   if (pwOptions.number) {
     possibleChar = possibleChar.concat(numericCharacters);
     const guaranteedNumeric = getRandomItem(numericCharacters);
-    console.log(`Random guaranteed numeric character: ${guaranteedNumeric}`)
     guaranteedChar.push(guaranteedNumeric);
   }
 
   if (pwOptions.upper) {
     possibleChar = possibleChar.concat(upperCasedCharacters);
     const guaranteedUpper = getRandomItem(upperCasedCharacters);
-    console.log(`Random guaranteed uppercase character: ${guaranteedUpper}`)
     guaranteedChar.push(guaranteedUpper);
   }
 
   if (pwOptions.lower) {
     possibleChar = possibleChar.concat(lowerCasedCharacters);
     const guaranteedLower = getRandomItem(lowerCasedCharacters);
-    console.log(`Random guaranteed lower character: ${guaranteedLower}`)
     guaranteedChar.push(guaranteedLower);
   }
-  
-  console.log(`Possible characters: ${possibleChar}`);
-  console.log(`Guaranteed characters: ${guaranteedChar}`);
-  
+    
   return pwOptions;
 }
 
@@ -191,10 +177,9 @@ function generatePassword() {
     let element = getRandomItem(possibleChar);
     generatedPwdArr.push(element);  
   }
-  console.log(generatedPwdArr);
+  
   generatedPwd = generatedPwdArr.join('');
-  console.log(`Generated password: ${generatedPwd}`);
-
+  
   return generatedPwd;
 
 }
