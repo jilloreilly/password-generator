@@ -114,6 +114,9 @@ function getPasswordOptions() {
   
   // !Once character sets are selected, move on to generating random characters
 
+  possibleChar = []; // Reset array to empty
+  guaranteedChar = [];
+
   pwdLength = parseInt(prompt("How many characters would you like your password to be? (Must be between 8 and 128)"));
   
   if (pwdLength < 8 || pwdLength > 128) { // Checks number entered is between 8 and 128
